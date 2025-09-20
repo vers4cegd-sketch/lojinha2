@@ -7,14 +7,17 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.error('❌ Supabase configuration missing!');
   console.error('VITE_SUPABASE_URL:', supabaseUrl ? '✅ Set' : '❌ Missing');
   console.error('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? '✅ Set' : '❌ Missing');
-  throw new Error('Missing Supabase environment variables. Please check your .env file.');
+  console.warn('⚠️ Supabase não configurado. A aplicação funcionará sem banco de dados.');
 }
 
 console.log('🔧 Supabase client configuration:');
 console.log('URL:', supabaseUrl);
 console.log('Key:', supabaseAnonKey ? `${supabaseAnonKey.substring(0, 20)}...` : 'Missing');
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co', 
+  supabaseAnonKey || 'placeholder-key', 
+  {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
