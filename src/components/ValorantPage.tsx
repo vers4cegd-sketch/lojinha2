@@ -355,6 +355,20 @@ const ValorantPage: React.FC<ValorantPageProps> = ({ onBack }) => {
               {/* Special Offer Banner */}
               {product.is_special_offer && (
                 <div className="bg-red-600 text-white text-center py-2 font-bold">
+
+            {/* Botão Comprar Direto (se tiver checkout_url) */}
+            {product.checkout_url && product.checkout_url.trim() !== '' && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(product.checkout_url, '_blank');
+                }}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105 mt-2"
+              >
+                <ShoppingCart className="w-4 h-4" />
+                <span>COMPRAR AGORA</span>
+              </button>
+            )}
                   OFERTA LIMITADA
                 </div>
               )}

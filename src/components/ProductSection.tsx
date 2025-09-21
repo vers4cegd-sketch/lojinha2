@@ -346,12 +346,31 @@ const ProductSection: React.FC = () => {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.location.href = `/produto/${product.id}`;
+                    // Se tem checkout_url específico, usar ele
+                    if (product.checkout_url && product.checkout_url.trim() !== '') {
+                      window.open(product.checkout_url, '_blank');
+                    } else {
+                      // Senão, ir para página de detalhes
+                      window.location.href = `/produto/${product.id}`;
+                    }
                   }}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105"
+                  className={`w-full font-bold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105 ${
+                    product.checkout_url && product.checkout_url.trim() !== '' 
+                      ? 'bg-green-600 hover:bg-green-700 text-white' 
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
                 >
-                  <Eye className="w-5 h-5" />
-                  <span>VER DETALHES</span>
+                  {product.checkout_url && product.checkout_url.trim() !== '' ? (
+                    <>
+                      <ShoppingCart className="w-5 h-5" />
+                      <span>COMPRAR AGORA</span>
+                    </>
+                  ) : (
+                    <>
+                      <Eye className="w-5 h-5" />
+                      <span>VER DETALHES</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -517,12 +536,31 @@ const ProductSection: React.FC = () => {
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.location.href = `/produto/${product.id}`;
+                      // Se tem checkout_url específico, usar ele
+                      if (product.checkout_url && product.checkout_url.trim() !== '') {
+                        window.open(product.checkout_url, '_blank');
+                      } else {
+                        // Senão, ir para página de detalhes
+                        window.location.href = `/produto/${product.id}`;
+                      }
                     }}
-                    className="w-full bg-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-500 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 group-hover:animate-pulse"
+                    className={`w-full font-bold py-3 px-4 rounded-lg transition-all duration-500 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105 hover:shadow-lg group-hover:animate-pulse ${
+                      product.checkout_url && product.checkout_url.trim() !== '' 
+                        ? 'bg-green-600 hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-600 text-white hover:shadow-green-500/30' 
+                        : 'bg-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 text-white hover:shadow-blue-500/30'
+                    }`}
                   >
-                    <Eye className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-                    <span>VER DETALHES</span>
+                    {product.checkout_url && product.checkout_url.trim() !== '' ? (
+                      <>
+                        <ShoppingCart className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                        <span>COMPRAR AGORA</span>
+                      </>
+                    ) : (
+                      <>
+                        <Eye className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                        <span>VER DETALHES</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
@@ -655,12 +693,31 @@ const ProductSection: React.FC = () => {
                 {/* Botão de compra fixo no rodapé */}
                 <button 
                   onClick={(e) => {
-                    window.location.href = `/produto/${product.id}`;
+                    // Se tem checkout_url específico, usar ele
+                    if (product.checkout_url && product.checkout_url.trim() !== '') {
+                      window.open(product.checkout_url, '_blank');
+                    } else {
+                      // Senão, ir para página de detalhes
+                      window.location.href = `/produto/${product.id}`;
+                    }
                   }}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105"
+                  className={`w-full font-bold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer transform hover:scale-105 ${
+                    product.checkout_url && product.checkout_url.trim() !== '' 
+                      ? 'bg-green-600 hover:bg-green-700 text-white' 
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
                 >
-                  <Eye className="w-5 h-5" />
-                  <span>VER DETALHES</span>
+                  {product.checkout_url && product.checkout_url.trim() !== '' ? (
+                    <>
+                      <ShoppingCart className="w-5 h-5" />
+                      <span>COMPRAR AGORA</span>
+                    </>
+                  ) : (
+                    <>
+                      <Eye className="w-5 h-5" />
+                      <span>VER DETALHES</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>

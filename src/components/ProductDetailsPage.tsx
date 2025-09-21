@@ -104,8 +104,14 @@ const ProductDetailsPage: React.FC = () => {
   };
 
 
-  // Função para obter URL de checkout baseada no produto
+  // Função para obter URL de checkout do produto
   const getCheckoutUrl = (product: any) => {
+    // Usar checkout_url específico do produto se existir
+    if (product?.checkout_url && product.checkout_url.trim() !== '') {
+      return product.checkout_url;
+    }
+    
+    // Fallback para URLs padrão baseadas na categoria
     const categoryName = product?.categories?.name?.toLowerCase();
     if (categoryName === 'valorant' || product?.name?.toLowerCase().includes('valorant')) {
       return 'https://checkout.traking.shop/valorant';
