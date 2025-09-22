@@ -18,6 +18,16 @@ const AdminPanel: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
 
+  // Desabilitar Google Analytics na área admin
+  useEffect(() => {
+    // Pausar o Google Analytics quando estiver no admin
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', 'AW-17591894551', {
+        send_page_view: false
+      });
+    }
+  }, []);
+
   useEffect(() => {
     // Verificar se há sessão salva no localStorage
     const savedAuth = localStorage.getItem('admin_authenticated');
